@@ -35,25 +35,25 @@ export interface PresentationConfig {
 
 export const presentationConfig: PresentationConfig = {
   meta: {
-    title: 'From Concept to Product',
-    subtitle: 'A reusable presentation template for tech talks and product stories',
+    title: 'Tänk om jag hade vetat',
+    subtitle: 'Lärdomar från resan mellan koncept och produkt',
     speaker: 'Tobias Bertilsson',
-    date: '2026',
-    contact: 'tobias@example.com',
-    repositoryUrl: 'https://github.com/your-org/vue-presentation-template',
+    date: '2026-xx-xx',
+    contact: 'tobias.bertilsson@consid.se',
+    repositoryUrl: 'https://github.com/tobisen/concon-2026/',
   },
   deployment: {
     basePath: import.meta.env.BASE_URL,
   },
   defaults: {
-    language: 'en',
+    language: 'sv',
     theme: 'dark',
     transition: 'slide',
   },
   features: {
-    languageSwitch: true,
-    themeSwitch: true,
-    transitionSwitch: true,
+    languageSwitch: false,
+    themeSwitch: false,
+    transitionSwitch: false,
     fullscreen: true,
     progress: true,
     controls: true,

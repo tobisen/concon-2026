@@ -21,6 +21,11 @@
   gap: clamp(1.25rem, 2.3vw, 2rem);
 }
 
+.title-slide .slide-title {
+  max-width: none;
+  white-space: nowrap;
+}
+
 .title-slide__meta {
   display: flex;
   gap: 1rem;
@@ -268,6 +273,10 @@
   display: grid;
   gap: 1.5rem;
   max-width: 48rem;
+}
+
+.image-background-slide .slide-body {
+  white-space: pre-line;
 }
 
 .image-background-slide__credit {

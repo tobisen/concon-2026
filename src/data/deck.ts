@@ -179,23 +179,46 @@ export const decks: Record<DeckLanguage, SlideDefinition[]> = {
     {
       type: 'title',
       props: {
-        kicker: 'Vue Presentation Template',
-        title: 'Från idé till produkt',
-        subtitle: 'Ett återanvändbart presentationssystem för tech talks, produktberättelser och praktiska lärdomar.',
+        kicker: 'Concon 2026',
+        title: 'Tänk om jag hade vetat',
+        subtitle: 'Lärdomar från resan mellan koncept och produkt',
         presenter: 'Tobias Bertilsson',
-        meta: '2026',
+        meta: '2026-xx-xx',
       },
-      notes: ['Öppna med löftet: det här är ett system för framtida presentationer, inte ett engångsdeck.'],
+      notes: ['Öppna med att rama in presentationen som praktiska lärdomar från resan mellan koncept och produkt.'],
     },
     {
-      type: 'introduction',
+      type: 'image-background',
+      imageAsset: 'generated-lounge-workspace',
       props: {
-        kicker: 'Introduktion',
-        title: 'Ett deck byggt av återanvändbara sidtyper',
-        intro: 'Det här exempeldecket visar byggstenarna du kan använda när du skapar framtida presentationer.',
-        points: ['Sätt berättelsen', 'Välj ett slide-mönster', 'Byt in ditt eget innehåll'],
+        kicker: 'Frågan',
+        title: 'Varför frågan fastnade',
+        body: `Jag började lyssna på podden "Tänk om vi hade vetat det här tidigare."
+
+Den handlar egentligen om människor, tankar och hur vi upplever världen.
+
+Men frågan fastnade hos mig av en annan anledning:
+
+Den beskriver också nästan varje produktresa jag har varit med om.`,
+        credit: 'Concon 2026',
       },
-      notes: ['Förklara att varje punkt motsvarar en del av arbetsflödet i mallen.'],
+      notes: ['Jämförelsevariant: image-background. Använd som en stämningsfull övergång från titel till berättelse.'],
+    },
+    {
+      type: 'content',
+      props: {
+        kicker: 'Frågan',
+        title: 'Tänk om vi hade vetat det här tidigare?',
+        body: 'En fråga som först lät personlig, men som visade sig vara väldigt relevant för produktutveckling.',
+        bullets: [
+          'Tänk om vi hade förstått behovet tidigare.',
+          'Tänk om vi hade sett risken tidigare.',
+          'Tänk om vi hade involverat test, UX eller tillgänglighet tidigare.',
+          'Tänk om vi hade pratat om antagandena innan de blev kod.',
+          'Tänk om vi hade vågat säga “jag förstår inte” tidigare.',
+        ],
+      },
+      notes: ['Foundation-variant med huvudpoäng till vänster och stödjande bullets till höger.'],
     },
     {
       type: 'speaker',
