@@ -4,7 +4,7 @@
 
 Tobias Bertilsson · ConCon 2026 · Hela resan – från koncept till produkt
 
-Version 1: 14 slides på svenska, cirka 30 minuter inklusive pauser, egna exempel och en kort publikreflektion. Föredraget hämtar inspiration från *Tänk om vi hade vetat det här tidigare* med Tomas Lydahl och Dennis Westerberg. Kopplingarna till produktutveckling är talarens egna reflektioner; inga formuleringar tillskrivs podden som citat.
+Iteration 2: 14 slides på svenska, cirka 30 minuter inklusive pauser, egna exempel och en kort publikreflektion. Föredraget hämtar inspiration från *Tänk om vi hade vetat det här tidigare* med Tomas Lydahl och Dennis Westerberg. Kopplingarna till produktutveckling är talarens egna reflektioner; inga formuleringar tillskrivs podden som citat.
 
 ## Köra och verifiera
 
@@ -28,10 +28,14 @@ npm run preview
 - [src/data/deck.ts](src/data/deck.ts): alla slides och talaranteckningar, i presentationsordning.
 - [src/data/presentationConfig.ts](src/data/presentationConfig.ts): metadata, svenskt språk, mörkt tema, diskret toning och kontroller.
 - [src/data/slideTypes.ts](src/data/slideTypes.ts) och [src/data/slideRegistry.ts](src/data/slideRegistry.ts): sidtyper och komponentregister.
-- [src/data/imageAssets.ts](src/data/imageAssets.ts): befintliga lokala bilder. De två bilderna i föredraget illustrerar samarbete respektive fart/riktning.
+- [src/data/imageAssets.ts](src/data/imageAssets.ts): befintliga lokala bilder. Den varma arbetsmiljön på slide 2 ger plats åt den inledande reflektionen.
 - [src/styles](src/styles): mallens burgundy/coral-tema, layout och typografi.
 
 Anteckningarna följer mallens `notes: string[]`. Varje slide har syfte, tid, manus och övergång. Regianvisningar och kompletteringsmarkeringar ska inte läsas högt. Tidsplanen förutsätter att de föreslagna egna exemplen fylls i och att publikpauserna får ta plats. Repetera med klocka för att anpassa till ditt taltempo.
+
+I iteration 2 får teamberättelsen på slide 5 ett enda stort påstående. Slide 7 visar perspektiv utan kort, slide 8 låter refinementfrågan stå ensam och slide 10 jämför AI-arbete med respektive utan målbild. Slide 11 ger plats åt en personlig reflektion om ordningen människor, problem och process.
+
+Slide 9 använder den befintliga `split`-typen med valfria `journeyStages`. Varje steg har `title`, `early`, `late` och valfritt `discovery: 'early' | 'late'`. En tabell visar Design → Implementation → Test → Leverans med samma fråga upptäckt vid två olika tidpunkter. Upptäckten markeras med både text och kontrast. Vanliga `split`-slides fungerar som tidigare och kan också få en kort slutsats via `body`.
 
 | Del | Slides | Tid |
 | --- | --- | --- |
@@ -42,15 +46,15 @@ Anteckningarna följer mallens `notes: string[]`. Varje slide har syfte, tid, ma
 
 ## Komplettera före framförandet
 
-Sök efter `[KOMPLETTERA MED EGET EXEMPEL]` i `deck.ts`. Varje markering innehåller ett konkret berättelseförslag och avsatt tid:
+Sök efter `[PERSONLIGT EXEMPEL BEHÖVS]` i `deck.ts`. Varje markering innehåller ett konkret berättelseförslag och avsatt tid:
 
 | Slide | Komplettering | Ungefärlig tid |
 | --- | --- | --- |
 | 5 · Vårt gamla bagage | En gammal teamberättelse och vilka förutsättningar den byggde på. | 25 sek |
-| 8 · Ett refinement som aldrig tog slut | Ett långt eller återkommande refinement: behovet, diskussionen och vad som förblev oklart eller ändrade förståelsen. | 60 sek |
+| 8 · Ett refinement som aldrig tog slut | Ett faktiskt långt eller återkommande refinement på Telia: behovet, diskussionen, beroenden och vad som förblev oklart eller ändrade förståelsen. | 60 sek |
 | 9 · Vi såg kvaliteten för sent | Ett tillgänglighetsproblem i samarbete mellan frontend, UX och test; när det upptäcktes och vad som behövde ändras. Ett uttryckligen hypotetiskt dialogexempel finns som alternativ. | 35 sek |
-| 10 · AI gör oss snabbare | Ett eget spel- eller prototypprojekt: vad AI hjälpte dig prova och vad du själv behövde bedöma. | 40 sek |
-| 11 · Från Scrum Master till agil coach | Din egen reflektion om rollen och ett hinder som krävde flera perspektiv. Bekräfta att jämförelsen på sliden stämmer med din erfarenhet. | 40 sek |
+| 10 · AI gör oss snabbare | Ett faktiskt tillfälle från Warbound eller Hollowbane: avsikten, vad du bad AI om och vad du själv behövde bedöma. | 40 sek |
+| 11 · Från Scrum Master till agil coach | Din egen reflektion om övergången från Telia till Livsmedelsverket. Bekräfta att slidens föreslagna perspektivskifte stämmer med din hållning, eller beskriv det som en ambition. | 40 sek |
 
 Konferensens exakta datum är inte angivet. Metadata använder därför enbart **2026**.
 

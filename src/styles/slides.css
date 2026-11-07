@@ -68,7 +68,7 @@
   grid-template-columns: 3.4rem 1fr;
   gap: 1rem;
   align-items: start;
-  padding-block: 1rem;
+  padding-block: 0.9rem;
   border-top: 1px solid var(--color-subtle-line);
   color: var(--color-text);
   font-size: clamp(1rem, 1.5vw, 1.2rem);
@@ -92,6 +92,11 @@
   max-width: 23ch;
   font-size: clamp(2.8rem, 5.2vw, 5.25rem);
   text-wrap: balance;
+  white-space: pre-line;
+}
+
+.big-idea-slide .slide-body {
+  white-space: pre-line;
 }
 
 .chapter-slide {
@@ -121,7 +126,17 @@
 
 .content-slide > div {
   display: grid;
+  flex: 1;
+  min-width: 0;
   gap: 1.4rem;
+}
+
+.content-slide .bullet-list {
+  flex: 0 1 44%;
+}
+
+.content-slide .bullet-list li {
+  font-size: clamp(1.1rem, 1.65vw, 1.5rem);
 }
 
 .bullet-list {
@@ -222,6 +237,97 @@
 .split-slide p {
   white-space: pre-line;
   font-size: clamp(1rem, 1.6vw, 1.4rem);
+}
+
+.split-slide .split-slide__takeaway {
+  max-width: none;
+  color: var(--color-accent-soft);
+  font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+}
+
+.split-slide--summary {
+  gap: clamp(1rem, 1.6vw, 1.5rem);
+}
+
+.split-slide--summary .split-slide__grid article {
+  min-height: clamp(12rem, 19vw, 15rem);
+}
+
+.split-slide--journey {
+  gap: clamp(0.8rem, 1.5vw, 1.5rem);
+}
+
+.journey-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0 0.65rem;
+  text-align: left;
+}
+
+.journey-table th,
+.journey-table td {
+  padding: clamp(0.75rem, 1.25vw, 1.25rem);
+  vertical-align: top;
+}
+
+.journey-table thead th {
+  position: relative;
+  padding-block: 0.3rem;
+  color: var(--color-accent-soft);
+  font-size: clamp(1rem, 1.35vw, 1.4rem);
+  font-weight: 650;
+}
+
+.journey-table th:first-child {
+  width: 16%;
+  padding-left: 0;
+}
+
+.journey-table__arrow {
+  position: absolute;
+  right: 0.6rem;
+  color: var(--color-accent);
+}
+
+.journey-table tbody th strong {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-size: clamp(1.2rem, 1.8vw, 1.7rem);
+}
+
+.journey-table tbody td {
+  border-left: 2px solid var(--color-subtle-line);
+  background: var(--color-panel-soft);
+  color: var(--color-text);
+}
+
+.journey-table .is-discovery {
+  border-color: var(--color-accent);
+  background: var(--color-card);
+  color: var(--color-card-text);
+}
+
+.split-slide .journey-table p {
+  color: inherit;
+  font-size: clamp(1rem, 1.45vw, 1.35rem);
+  line-height: 1.4;
+  white-space: normal;
+}
+
+.split-slide .journey-table tbody th p {
+  color: var(--color-text-muted);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+}
+
+.journey-table__marker {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-size: clamp(0.75rem, 0.95vw, 0.9rem);
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .three-column-slide__grid {
@@ -405,13 +511,18 @@
 }
 
 .quote-slide blockquote {
-  max-width: none;
+  max-width: 23ch;
   color: var(--color-text);
-  font-size: clamp(2rem, 3.4vw, 3.5rem);
+  font-size: clamp(3rem, 5.8vw, 5.5rem);
   font-weight: 650;
   letter-spacing: 0;
-  line-height: 1.2;
+  line-height: 1.05;
   white-space: pre-line;
+}
+
+.quote-slide > .slide-title {
+  max-width: none;
+  font-size: clamp(2.4rem, 4.2vw, 4.25rem);
 }
 
 .quote-slide figcaption {

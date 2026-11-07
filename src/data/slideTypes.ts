@@ -54,6 +54,8 @@ export const slideTypes: SlideTypeDefinition[] = [
       "leftBody",
       "rightTitle",
       "rightBody",
+      "body",
+      "journeyStages",
     ],
   },
   {
