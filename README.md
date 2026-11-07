@@ -1,143 +1,73 @@
-# Vue Presentation Template
+# ConCon 2026 – Tänk om jag hade vetat
 
-A reusable Vue 3 + Vite presentation template for tech talks, workshops, internal demos and product stories.
+**Det vi ofta förstår för sent i produktutveckling**
 
-The template provides a polished dark keynote-style visual foundation with 16:9 slides, keyboard navigation, reusable slide components and centralized CSS design tokens.
+Tobias Bertilsson · ConCon 2026 · Hela resan – från koncept till produkt
 
-## Getting Started
+Version 1: 14 slides på svenska, cirka 30 minuter inklusive pauser, egna exempel och en kort publikreflektion. Föredraget hämtar inspiration från *Tänk om vi hade vetat det här tidigare* med Tomas Lydahl och Dennis Westerberg. Kopplingarna till produktutveckling är talarens egna reflektioner; inga formuleringar tillskrivs podden som citat.
+
+## Köra och verifiera
+
+Projektet använder Vue 3, TypeScript och Vite 8. Använd Node 22.12+ (eller 20.19+).
 
 ```sh
-npm install
+npm ci
 npm run dev
 ```
 
-Build a production version:
-
 ```sh
+npx vue-tsc -b
 npm run build
+npm run preview
 ```
 
-Create a starter deck file:
+`build` kör också typecheck. Projektet har ingen befintlig testsvit eller testscript.
 
-```sh
-npm run create:deck my-talk "My Talk Title"
-```
+## Innehåll och talaranteckningar
 
-See [docs/create-presentation.md](/Users/tobiasbertilsson/kod/vue-presentation-template/docs/create-presentation.md) for the recommended fork workflow.
+- [src/data/deck.ts](src/data/deck.ts): alla slides och talaranteckningar, i presentationsordning.
+- [src/data/presentationConfig.ts](src/data/presentationConfig.ts): metadata, svenskt språk, mörkt tema, diskret toning och kontroller.
+- [src/data/slideTypes.ts](src/data/slideTypes.ts) och [src/data/slideRegistry.ts](src/data/slideRegistry.ts): sidtyper och komponentregister.
+- [src/data/imageAssets.ts](src/data/imageAssets.ts): befintliga lokala bilder. De två bilderna i föredraget illustrerar samarbete respektive fart/riktning.
+- [src/styles](src/styles): mallens burgundy/coral-tema, layout och typografi.
 
-## Editing The Deck
+Anteckningarna följer mallens `notes: string[]`. Varje slide har syfte, tid, manus och övergång. Regianvisningar och kompletteringsmarkeringar ska inte läsas högt. Tidsplanen förutsätter att de föreslagna egna exemplen fylls i och att publikpauserna får ta plats. Repetera med klocka för att anpassa till ditt taltempo.
 
-Slides are defined in [src/data/deck.ts](/Users/tobiasbertilsson/kod/vue-presentation-template/src/data/deck.ts). The template ships with English and Swedish decks. Each slide chooses a named slide type and passes content as props:
+| Del | Slides | Tid |
+| --- | --- | --- |
+| Varför frågan fastnade | 1–3 | 00:00–05:00 |
+| Våra tankar formar hur vi arbetar | 4–7 | 05:00–13:00 |
+| Insikterna i praktiken | 8–12 | 13:00–25:00 |
+| Avslutning och publikreflektion | 13–14 | 25:00–30:00 |
 
-```ts
-{
-  type: 'big-idea',
-  props: {
-    kicker: 'Our Big Idea',
-    title: 'Presentations should feel designed before you add the content.',
-    body: 'A reusable deck framework keeps visual decisions consistent.',
-  },
-}
-```
+## Komplettera före framförandet
 
-For image-based slides, choose an asset by id:
+Sök efter `[KOMPLETTERA MED EGET EXEMPEL]` i `deck.ts`. Varje markering innehåller ett konkret berättelseförslag och avsatt tid:
 
-```ts
-{
-  type: 'image-background',
-  imageAsset: 'generated-tech-arc',
-  props: {
-    kicker: 'Architecture',
-    title: 'Make the system visible.',
-    body: 'Use full-bleed visuals for atmosphere and transitions.',
-  },
-}
-```
+| Slide | Komplettering | Ungefärlig tid |
+| --- | --- | --- |
+| 5 · Vårt gamla bagage | En gammal teamberättelse och vilka förutsättningar den byggde på. | 25 sek |
+| 8 · Ett refinement som aldrig tog slut | Ett långt eller återkommande refinement: behovet, diskussionen och vad som förblev oklart eller ändrade förståelsen. | 60 sek |
+| 9 · Vi såg kvaliteten för sent | Ett tillgänglighetsproblem i samarbete mellan frontend, UX och test; när det upptäcktes och vad som behövde ändras. Ett uttryckligen hypotetiskt dialogexempel finns som alternativ. | 35 sek |
+| 10 · AI gör oss snabbare | Ett eget spel- eller prototypprojekt: vad AI hjälpte dig prova och vad du själv behövde bedöma. | 40 sek |
+| 11 · Från Scrum Master till agil coach | Din egen reflektion om rollen och ett hinder som krävde flera perspektiv. Bekräfta att jämförelsen på sliden stämmer med din erfarenhet. | 40 sek |
 
-## Presentation Config
+Konferensens exakta datum är inte angivet. Metadata använder därför enbart **2026**.
 
-When forking the template for a new presentation, start in [src/data/presentationConfig.ts](/Users/tobiasbertilsson/kod/vue-presentation-template/src/data/presentationConfig.ts):
+## Presentera
 
-- `languageSwitch`: enable or disable language selection.
-- `themeSwitch`: enable or disable light/dark theme selection.
-- `transitionSwitch`: enable or disable runtime transition changes.
-- `defaults.language`: choose the starting language.
-- `defaults.theme`: choose `dark` or `light`.
-- `defaults.transition`: choose `fade`, `slide`, `lift`, `zoom` or `wipe`.
-- `controls`, `progress` and `fullscreen`: choose which presentation controls are available.
+- `→`, `↓`, `Space`, `PageDown`: nästa slide.
+- `←`, `↑`, `PageUp`: föregående slide.
+- `F`: helskärm; bildöversikten döljs automatiskt.
+- `N`: talaranteckningar ovanpå aktuell slide, i en skrollbar panel. `N` eller `Escape` stänger panelen.
+- Knapparna nere till höger navigerar; miniatyrerna till vänster hoppar till valfri slide.
 
-## Presentation Assets
-
-Images extracted from the PPT template live in [public/presentation](/Users/tobiasbertilsson/kod/vue-presentation-template/public/presentation). A few reusable aliases are included for future decks:
-
-- `/presentation/workshop-lounge.jpeg`: warm workshop or talk background.
-- `/presentation/workshop-wall.jpeg`: speaker or workshop context image.
-- `/presentation/abstract-soft.jpeg`: neutral premium abstract background.
-- `/presentation/coral-shape.jpeg`: coral accent background inspired by the PPT style.
-- `/presentation/generated-tech-arc.png`: dark technical keynote background.
-- `/presentation/generated-lounge-workspace.png`: warm product/workshop photo background.
-- `/presentation/generated-light-paper.png`: light paper/coral background for light mode.
-- `/presentation/generated-burgundy-shapes.png`: dark burgundy abstract title background.
-
-The reusable asset catalog is defined in [src/data/imageAssets.ts](/Users/tobiasbertilsson/kod/vue-presentation-template/src/data/imageAssets.ts). Use the asset `id` in `deck.ts`.
-
-## Available Slide Components
-
-The reusable page type catalog is defined in [src/data/slideTypes.ts](/Users/tobiasbertilsson/kod/vue-presentation-template/src/data/slideTypes.ts). The Vue component registry is defined in [src/data/slideRegistry.ts](/Users/tobiasbertilsson/kod/vue-presentation-template/src/data/slideRegistry.ts).
-
-- `TitleSlide`: front slide with kicker, title, subtitle, presenter and meta.
-- `IntroductionSlide`: introduction or agenda slide with numbered points.
-- `ChapterSlide`: section divider with number, title and subtitle.
-- `BigIdeaSlide`: one large statement with optional supporting body text.
-- `ContentSlide`: title, short body copy and bullets.
-- `SplitSlide`: two-column comparisons such as before/after or problem/solution.
-- `ThreeColumnSlide`: three parallel ideas, principles, phases or tracks.
-- `CardGridSlide`: 3-5 cards for principles, phases, services or lessons.
-- `ImageBackgroundSlide`: full-bleed image or cinematic background slide.
-- `SpeakerSlide`: presenter or guest speaker introduction.
-- `QuoteSlide`: large reflection or quote with source.
-- `ClosingSlide`: final message with next steps.
-- `QuestionsSlide`: Q&A ending slide with optional contact details.
-
-## Project Structure
-
-```text
-src/
-├─ components/
-│  ├─ deck/
-│  │  ├─ PresentationDeck.vue
-│  │  └─ SlideFrame.vue
-│  └─ slides/
-├─ data/
-│  ├─ deck.ts
-│  └─ slideTypes.ts
-├─ styles/
-│  ├─ tokens.css
-│  ├─ typography.css
-│  ├─ layout.css
-│  ├─ slides.css
-│  └─ utilities.css
-├─ App.vue
-└─ main.ts
-```
-
-## Navigation
-
-- Use `ArrowRight`, `ArrowDown`, `Space` or `PageDown` for the next slide.
-- Use `ArrowLeft`, `ArrowUp` or `PageUp` for the previous slide.
-- Press `F` to enter or exit browser fullscreen.
-- Press `L` to toggle between English and Swedish.
-- Press `T` to toggle between dark and light theme.
-- Press `M` to cycle slide transitions: `fade`, `slide`, `lift`, `zoom` and `wipe`.
-- Press `N` to open speaker notes.
-- Use the controls in the lower right corner when presenting with a pointer.
-- Use the left slide navigator to jump between slides. It is hidden automatically in fullscreen.
-- Use the language switch in the upper right corner to choose `EN` or `SV`.
-
-## Theming
-
-Design tokens live in [src/styles/tokens.css](/Users/tobiasbertilsson/kod/vue-presentation-template/src/styles/tokens.css). Start there to change colors, typography or spacing across the whole deck. The template includes both dark and light theme tokens, and the deck can switch theme with `T` or the theme button.
+Språk-, tema- och övergångsväxling är avstängda i konfigurationen för det här föredraget. Komponenter och kontroller för dessa funktioner finns kvar. Decket innehåller bara svenska; lägg till språk både i `DeckLanguage` och `decks` om fler versioner behövs senare.
 
 ## GitHub Pages
 
-Use the included `.github/workflows/deploy-pages.yml` workflow and set GitHub Pages to `GitHub Actions` in repository settings. The Vite base path is detected automatically in GitHub Actions, and can be overridden with `VITE_BASE_PATH`.
+Den befintliga [deploy-pages.yml](.github/workflows/deploy-pages.yml) bygger `dist` och publicerar vid push till `main`. Vite väljer automatiskt repositoryts sökväg i GitHub Actions. `VITE_BASE_PATH` kan användas för att ange en annan bas. Bildvägar hanteras av presentationsmotorns befintliga `withBasePath`.
+
+Välj `GitHub Actions` under repositoryts Pages-inställningar när publicering är aktuell.
+
+Mallen behåller även verktyget `npm run create:deck <filnamn> "Titel"`. Se [docs/create-presentation.md](docs/create-presentation.md) för den allmänna mallguiden.

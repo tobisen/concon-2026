@@ -23,7 +23,7 @@
 
 .title-slide .slide-title {
   max-width: none;
-  white-space: nowrap;
+  text-wrap: balance;
 }
 
 .title-slide__meta {
@@ -89,7 +89,9 @@
 }
 
 .big-idea-slide .slide-title {
-  max-width: 15ch;
+  max-width: 23ch;
+  font-size: clamp(2.8rem, 5.2vw, 5.25rem);
+  text-wrap: balance;
 }
 
 .chapter-slide {
@@ -159,6 +161,14 @@
   gap: clamp(1.5rem, 3vw, 2.4rem);
 }
 
+.split-slide > .slide-title,
+.three-column-slide > .slide-title,
+.card-grid-slide > .slide-title {
+  max-width: 28ch;
+  font-size: clamp(2.4rem, 4.2vw, 4.25rem);
+  text-wrap: balance;
+}
+
 .split-slide__grid,
 .three-column-slide__grid,
 .card-grid {
@@ -203,6 +213,17 @@
   line-height: 1.45;
 }
 
+.presentation-card > span {
+  color: var(--color-card-text);
+  font-size: clamp(0.8rem, 1.1vw, 1rem);
+  letter-spacing: 0.12em;
+}
+
+.split-slide p {
+  white-space: pre-line;
+  font-size: clamp(1rem, 1.6vw, 1.4rem);
+}
+
 .three-column-slide__grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -218,7 +239,7 @@
 }
 
 .card-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--card-count, 4), minmax(0, 1fr));
 }
 
 .presentation-card {
@@ -233,6 +254,33 @@
 
 .presentation-card p {
   color: var(--color-card-text-muted);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+}
+
+.presentation-card h3 {
+  font-size: clamp(1.2rem, 1.8vw, 1.75rem);
+  hyphens: auto;
+}
+
+.card-grid-slide__takeaway {
+  max-width: none;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-accent);
+  color: var(--color-accent-soft);
+  font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+}
+
+.introduction-slide__copy {
+  flex: 0 1 40%;
+  min-width: 0;
+}
+
+.number-list {
+  flex: 1;
+}
+
+.number-list li {
+  font-size: clamp(1.1rem, 1.7vw, 1.5rem);
 }
 
 .slide--image-background {
@@ -251,6 +299,10 @@
 
 .slide--image-background .slide__content {
   position: static;
+}
+
+.slide--image-background .slide-kicker {
+  z-index: 2;
 }
 
 .image-background-slide {
@@ -353,12 +405,13 @@
 }
 
 .quote-slide blockquote {
-  max-width: 17ch;
+  max-width: none;
   color: var(--color-text);
-  font-size: clamp(3rem, 6.6vw, 6rem);
+  font-size: clamp(2rem, 3.4vw, 3.5rem);
   font-weight: 650;
   letter-spacing: 0;
-  line-height: 0.96;
+  line-height: 1.2;
+  white-space: pre-line;
 }
 
 .quote-slide figcaption {
@@ -378,6 +431,12 @@
 .closing-slide > div {
   display: grid;
   gap: 1.5rem;
+}
+
+.closing-slide .slide-title {
+  max-width: 23ch;
+  font-size: clamp(3rem, 5.2vw, 5.25rem);
+  text-wrap: balance;
 }
 
 .closing-slide__steps {

@@ -294,7 +294,7 @@ export default defineComponent({
       ref="slideSidebar"
       class="slide-sidebar"
       :style="{ '--thumbnail-scale': thumbnailScale }"
-      aria-label="Slides"
+      aria-label="Bildöversikt"
     >
       <header>
         <p>{{ config.meta.title }}</p>
@@ -306,7 +306,7 @@ export default defineComponent({
           :key="`${slide.type}-${index}`"
           type="button"
           :class="{ 'is-active': index === currentIndex }"
-          :aria-label="`Go to slide ${index + 1}: ${getSlideTitle(slide)}`"
+          :aria-label="`Gå till bild ${index + 1}: ${getSlideTitle(slide)}`"
           @click="goToSlide(index)"
         >
           <span class="slide-sidebar__number">{{ String(index + 1).padStart(2, '0') }}</span>
@@ -324,8 +324,8 @@ export default defineComponent({
       </Transition>
     </div>
 
-    <div class="deck-toolbar" aria-label="Presentation settings">
-      <div v-if="features.languageSwitch" class="language-switch" aria-label="Language">
+    <div class="deck-toolbar" aria-label="Presentationsinställningar">
+      <div v-if="features.languageSwitch" class="language-switch" aria-label="Språk">
         <button
           v-for="language in languages"
           :key="language"
@@ -338,20 +338,20 @@ export default defineComponent({
         </button>
       </div>
       <button v-if="features.fullscreen" type="button" class="fullscreen-button" :aria-pressed="isFullscreen" @click="toggleFullscreen">
-        {{ isFullscreen ? 'Exit F' : 'Full F' }}
+        {{ isFullscreen ? 'Lämna helskärm F' : 'Helskärm F' }}
       </button>
       <button v-if="features.themeSwitch" type="button" class="theme-button" :aria-pressed="currentTheme === 'light'" @click="toggleTheme">
-        {{ currentTheme === 'dark' ? 'Light T' : 'Dark T' }}
+        {{ currentTheme === 'dark' ? 'Ljust T' : 'Mörkt T' }}
       </button>
       <button v-if="features.transitionSwitch" type="button" class="transition-button" @click="cycleTransition">
         {{ transitionLabel }} M
       </button>
       <button v-if="features.speakerNotes" type="button" class="notes-button" :aria-pressed="isNotesOpen" @click="toggleNotes">
-        Notes N
+        Anteckningar N
       </button>
     </div>
 
-    <aside v-if="isNotesOpen" class="deck-overlay deck-notes" aria-label="Speaker notes">
+    <aside v-if="isNotesOpen" class="deck-overlay deck-notes" aria-label="Talaranteckningar">
       <header>
         <p class="overlay-kicker">{{ currentSlideNumber }} / {{ totalSlides }}</p>
         <h2>{{ currentSlideTitle }}</h2>
@@ -359,15 +359,15 @@ export default defineComponent({
       <ul v-if="currentSlideNotes.length">
         <li v-for="note in currentSlideNotes" :key="note">{{ note }}</li>
       </ul>
-      <p v-else>No speaker notes for this slide.</p>
+      <p v-else>Inga talaranteckningar för den här bilden.</p>
     </aside>
 
-    <div v-if="features.controls" class="deck-controls" aria-label="Presentation controls">
-      <button type="button" class="deck-button" :disabled="currentIndex === 0" aria-label="Previous slide" @click="previousSlide">
+    <div v-if="features.controls" class="deck-controls" aria-label="Presentationskontroller">
+      <button type="button" class="deck-button" :disabled="currentIndex === 0" aria-label="Föregående bild" @click="previousSlide">
         <span aria-hidden="true">‹</span>
       </button>
       <span class="deck-count">{{ currentSlideNumber }} / {{ totalSlides }}</span>
-      <button type="button" class="deck-button" :disabled="currentIndex === slides.length - 1" aria-label="Next slide" @click="nextSlide">
+      <button type="button" class="deck-button" :disabled="currentIndex === slides.length - 1" aria-label="Nästa bild" @click="nextSlide">
         <span aria-hidden="true">›</span>
       </button>
     </div>

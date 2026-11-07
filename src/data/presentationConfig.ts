@@ -36,9 +36,9 @@ export interface PresentationConfig {
 export const presentationConfig: PresentationConfig = {
   meta: {
     title: 'Tänk om jag hade vetat',
-    subtitle: 'Lärdomar från resan mellan koncept och produkt',
+    subtitle: 'Det vi ofta förstår för sent i produktutveckling',
     speaker: 'Tobias Bertilsson',
-    date: '2026-xx-xx',
+    date: '2026',
     contact: 'tobias.bertilsson@consid.se',
     repositoryUrl: 'https://github.com/tobisen/concon-2026/',
   },
@@ -48,7 +48,7 @@ export const presentationConfig: PresentationConfig = {
   defaults: {
     language: 'sv',
     theme: 'dark',
-    transition: 'slide',
+    transition: 'fade',
   },
   features: {
     languageSwitch: false,

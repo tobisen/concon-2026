@@ -306,7 +306,10 @@
 .deck-notes {
   right: 1.25rem;
   bottom: 4rem;
-  width: min(28rem, calc(100vw - 2.5rem));
+  width: min(40rem, calc(100vw - 2.5rem));
+  max-height: calc(100svh - 8rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 1.25rem;
 }
 

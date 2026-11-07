@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { presentationConfig } from '../../data/presentationConfig'
 
 export default defineComponent({
   name: 'SlideFrame',
@@ -10,11 +11,16 @@ export default defineComponent({
     },
     meta: {
       type: String,
-      default: 'Vue Presentation Template',
+      default: presentationConfig.meta.title,
     },
     variant: {
       type: String,
       default: 'default',
+    },
+  },
+  computed: {
+    presentationYear(): string {
+      return presentationConfig.meta.date
     },
   },
 })
@@ -29,7 +35,7 @@ export default defineComponent({
     </div>
     <footer class="slide-footer">
       <span>{{ meta }}</span>
-      <span>16:9</span>
+      <span>{{ presentationYear }}</span>
     </footer>
   </section>
 </template>
